@@ -12,27 +12,17 @@ package com.vuforia.samples.SampleApplication;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.graphics.Point;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.OrientationEventListener;
 import android.view.WindowManager;
 
-import com.vuforia.CameraCalibration;
 import com.vuforia.CameraDevice;
 import com.vuforia.Device;
 import com.vuforia.INIT_ERRORCODE;
 import com.vuforia.INIT_FLAGS;
-import com.vuforia.Matrix44F;
-import com.vuforia.Renderer;
 import com.vuforia.State;
-import com.vuforia.Tool;
-import com.vuforia.Vec2I;
-import com.vuforia.VideoBackgroundConfig;
-import com.vuforia.VideoMode;
 import com.vuforia.Vuforia;
 import com.vuforia.Vuforia.UpdateCallbackInterface;
 import com.vuforia.samples.VuforiaSamples.R;
@@ -40,6 +30,7 @@ import com.vuforia.samples.VuforiaSamples.R;
 
 public class SampleApplicationSession implements UpdateCallbackInterface
 {
+    private static final String LICENSE_KEY = "AbHIdLb/////AAAAGWENg8NmKkbasVE+sh9nPrEfxtm4fJl64NHuo3DTUFAvH9hm/zCKM4lYQOekxL2+Bvm8Ojh0n+UeSyDBNbJ+GAnFJG0filLNLnpz/JaL6VRcR+d54glPDCctUoh9mzSexrMWKvNNzBhbm3lJ7cfvTTsmVsl1RW0ljWI8io5Y+sPgBNlh9JnNZdiSbdr/FTuN03GkBY8FzfHD+5dKUnqfS392e8jbI/xWpdjxe+t+EIr4VXTRLGiUyA7TiWk7R9uVpUw8PRluDg/IQwh0c4PCzzkoGBrX+mNZy27behkvtXzsqBW9EoYnYqakpbvizweIFXvnal5pkNJCXtsjqNC4MqQ+zmOlq+ZDBhB7t8Fgm9kr";
     
     private static final String LOGTAG = "SampleAppSession";
     
@@ -332,7 +323,7 @@ public class SampleApplicationSession implements UpdateCallbackInterface
             // Prevent the onDestroy() method to overlap with initialization:
             synchronized (mShutdownLock)
             {
-                Vuforia.setInitParameters(mActivity, mVuforiaFlags, "");
+                Vuforia.setInitParameters(mActivity, mVuforiaFlags, LICENSE_KEY);
                 
                 do
                 {
